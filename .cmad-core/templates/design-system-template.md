@@ -1,6 +1,7 @@
 # Design System & Conventions — Template
 
 > Template for the `designer` subagent's output. The designer produces TWO things from this template:
+>
 > 1. **`CONVENTIONS.md`** in `ai-docs/conventions/` — the code conventions every component follows (sections A–F below).
 > 2. **The design system as Tailwind v4 `@theme` tokens** written into `src/index.css` (section G below describes what must be present there).
 >
@@ -9,6 +10,7 @@
 ---
 
 ## Document Metadata
+
 - PRD path: `<path>`
 - Date: `<YYYY-MM-DD>`
 - Business / site name: `<name>`
@@ -20,10 +22,10 @@
 
 A table mapping every design decision to its origin in the PRD. Every token in section G must trace to a row here.
 
-| Token group | PRD source | Value(s) chosen |
-|---|---|---|
-| Primary color | PRD Brand § <ref> | `#......` |
-| ... | ... | ... |
+| Token group   | PRD source        | Value(s) chosen |
+| ------------- | ----------------- | --------------- |
+| Primary color | PRD Brand § <ref> | `#......`       |
+| ...           | ...               | ...             |
 
 If the PRD specifies a value, use it exactly. If the PRD is silent on something the build needs, choose a sensible value and record it in section F (Designer-chosen defaults) — never invent silently.
 
@@ -31,7 +33,7 @@ If the PRD specifies a value, use it exactly. If the PRD is silent on something 
 
 ## B. Code Style (required)
 
-Document the conventions every component file will follow. These are *established*, not discovered (this is greenfield — there is no existing code to read). Be specific enough that two different component builds would look like the same author wrote them.
+Document the conventions every component file will follow. These are _established_, not discovered (this is greenfield — there is no existing code to read). Be specific enough that two different component builds would look like the same author wrote them.
 
 - **Formatting**: semicolons, quote style, line width (align with the Prettier config the scaffold installed: single quotes, semicolons, 100-char width — state it explicitly)
 - **Indentation**: spaces, width
@@ -116,15 +118,15 @@ Document (and implement in the CSS):
 Include the literal CSS block the designer wrote, e.g.:
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-primary: #E31914;
-  --color-primary-dark: #A8120F;
-  --color-ink: #1A1A1A;
-  --color-bg: #F7F4EF;
-  --font-display: "Oswald", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --color-primary: #e31914;
+  --color-primary-dark: #a8120f;
+  --color-ink: #1a1a1a;
+  --color-bg: #f7f4ef;
+  --font-display: 'Oswald', sans-serif;
+  --font-sans: 'Inter', sans-serif;
   /* ...full system... */
 }
 ```

@@ -1,6 +1,7 @@
 # Site Analysis — Template
 
 > Template for the analysis subagents' output, saved to `prd-output/<business-name>/<business-name>-analysis.md`. Two different subagents write against this template depending on the mode set by `prd-builder`:
+>
 > - **`site-analyzer`** (improve-existing) — fills the per-page sections from a crawl + screenshots.
 > - **`business-profiler`** (create-from-scratch) — fills the provenance + inferred-IA sections from business data.
 >
@@ -9,8 +10,9 @@
 ---
 
 ## Document Metadata (required, both modes)
+
 - Mode: `<improve-existing | create-from-scratch>`
-- Business / site name: `<exact name>`  ← transcribed exactly; titles the checklist, names the folder
+- Business / site name: `<exact name>` ← transcribed exactly; titles the checklist, names the folder
 - Business-type profile: `<local-service | contractor | general-local>`
 - Source: `<URL>` (improve) or `<"business data provided"|GBP paste|typed details>` (scratch)
 - Date: `<YYYY-MM-DD>`
@@ -50,6 +52,7 @@ Everything the PRD's mandatory SEO section will need:
 One subsection PER confirmed page. For each page:
 
 ### Page: `<name / path>`
+
 - **Screenshot coverage**: desktop ✓/✗ · mobile ✓/✗ (if neither, mark visual assessment limited-to-HTML)
 - **Content inventory** — the real content a visitor needs, captured in enough detail to preserve it verbatim where it matters (copy, contact info, events, hours, links, CTAs). This is what the rebuild must not lose.
 - **Structure & IA** — sections on the page, heading hierarchy, how it links to other pages
@@ -64,6 +67,7 @@ How the pages relate — the nav structure, the overall site map, page-to-page f
 ## E. Content-vs-Artifact Catalog (required, improve)
 
 Two explicit lists for the whole site:
+
 - **Real content to preserve** — every substantive item (this becomes the content-preservation contract the PRD is checked against)
 - **Artifacts to discard** — every template/builder leftover
 

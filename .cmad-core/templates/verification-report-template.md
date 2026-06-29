@@ -7,6 +7,7 @@
 ---
 
 ## Document Metadata (required)
+
 - PRD path: `<path>`
 - Conventions path: `ai-docs/conventions/CONVENTIONS.md`
 - Date: `<YYYY-MM-DD>`
@@ -29,11 +30,11 @@ If the build or typecheck fails, the site is not verified — report and route b
 
 A table mapping EVERY acceptance criterion from the PRD (across every section) to pass/fail with evidence. Evidence is a concrete observation (what renders, what the markup shows, what a check confirms) — not "looks fine."
 
-| PRD Section | Acceptance Criterion | Pass/Fail | Evidence |
-|---|---|---|---|
-| Hero | Full-bleed ~85vh with gradient overlay, headline, 2 CTAs | ✓ | Renders full-height; `.text-primary` CTA + outline CTA present in `Hero.tsx` |
-| Events | Jackpot events show gold badge | ✓ | `EventCard` renders `--color-gold` badge when `isJackpot` |
-| ... | ... | ... | ... |
+| PRD Section | Acceptance Criterion                                     | Pass/Fail | Evidence                                                                     |
+| ----------- | -------------------------------------------------------- | --------- | ---------------------------------------------------------------------------- |
+| Hero        | Full-bleed ~85vh with gradient overlay, headline, 2 CTAs | ✓         | Renders full-height; `.text-primary` CTA + outline CTA present in `Hero.tsx` |
+| Events      | Jackpot events show gold badge                           | ✓         | `EventCard` renders `--color-gold` badge when `isJackpot`                    |
+| ...         | ...                                                      | ...       | ...                                                                          |
 
 Every criterion must appear. A failing criterion is routed back to the owning component.
 

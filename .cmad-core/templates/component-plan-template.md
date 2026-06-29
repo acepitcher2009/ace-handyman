@@ -1,6 +1,7 @@
 # Component Plan — Template
 
 > Template for the `decomposer` subagent's output. The decomposer produces TWO things from this template:
+>
 > 1. **The component plan** at `ai-docs/components/<site>-plan.md` — one entry per section/component, in build order (sections below).
 > 2. **`DEPENDENCIES.md`** at the project root — the feature packages this PRD requires, with a single install command (section F below).
 >
@@ -9,6 +10,7 @@
 ---
 
 ## Document Metadata (required)
+
 - PRD path: `<path>`
 - Conventions path: `ai-docs/conventions/CONVENTIONS.md`
 - Date: `<YYYY-MM-DD>`
@@ -27,11 +29,11 @@
 
 A table mapping every PRD section/requirement to the component(s) that will implement it. Every PRD section must appear. This is the bridge between "what the PRD specifies" and "what gets built."
 
-| PRD Section | Component(s) | Notes |
-|---|---|---|
-| Hero | Hero | |
-| Events | Events + EventCard + events data file | |
-| ... | ... | ... |
+| PRD Section | Component(s)                          | Notes |
+| ----------- | ------------------------------------- | ----- |
+| Hero        | Hero                                  |       |
+| Events      | Events + EventCard + events data file |       |
+| ...         | ...                                   | ...   |
 
 If a PRD section needs multiple components, list them all. If two PRD sections collapse into one component, document the merge in Notes. Nothing in the PRD's per-section requirements may be left unmapped.
 
@@ -85,7 +87,7 @@ The feature packages this PRD requires, written to `DEPENDENCIES.md` at the proj
 - One-line justification tied to a specific PRD requirement
 - (Group them into a single install command)
 
-**Do not list infrastructure already installed by the scaffold**: Vite, React, TypeScript, Tailwind, Prettier. Only list *feature* packages the PRD's requirements call for (e.g. an email/form library, an icon set, an animation library).
+**Do not list infrastructure already installed by the scaffold**: Vite, React, TypeScript, Tailwind, Prettier. Only list _feature_ packages the PRD's requirements call for (e.g. an email/form library, an icon set, an animation library).
 
 `DEPENDENCIES.md` ends with one ready-to-run command, e.g.:
 

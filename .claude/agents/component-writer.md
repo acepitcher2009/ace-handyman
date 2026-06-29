@@ -51,6 +51,7 @@ Stories must be consistent. If story 1 built a shared `Button`, this story refer
 From the **plan**, extract this component's responsibilities, data needs, acceptance criteria, tokens, and dependencies.
 
 From **`CONVENTIONS.md`**, extract:
+
 - The component structure (the canonical skeleton your example must mirror)
 - File organization (where the component and any data file live, how it's composed into the page)
 - Token consumption rules (the anti-drift rule your example must obey)
@@ -64,18 +65,23 @@ This is the step that prevents downstream failures. An example that doesn't matc
 Use the template sections. Required content:
 
 #### Story Summary
+
 "As a [visitor/owner], I need [component], so that [benefit]." Match the PRD's framing.
 
 #### Background / Context
+
 2–3 sentences linking to the plan entry and PRD section, plus prior-component dependencies.
 
 #### Acceptance Criteria
+
 **Expanded** beyond the plan — specific and testable, including responsive behavior and the token-cleanliness requirement.
 
 #### Conventions Reference
+
 Explicit pointers to `CONVENTIONS.md` sections (component structure, file organization, token consumption). This is what makes the build reliable.
 
 #### Technical Implementation Details
+
 - **Files to create/modify** — table including the component, any data file, and the composition edit (wiring into `src/App.tsx`)
 - **Component example** — TypeScript-typed, mirroring the canonical skeleton, using real `@theme` tokens, with NO hardcoded style values
 - **Data file** — if applicable, the exported data + type, populated with the real seed content from the PRD (the actual events, hours, services — exactly as the PRD states them)
@@ -85,18 +91,22 @@ Explicit pointers to `CONVENTIONS.md` sections (component structure, file organi
 - **Accessibility** — semantic element, heading level (preserve one h1, no skipped levels), alt text, labelled inputs, focus states
 
 #### Testing Strategy (scales with tier)
+
 - **none** — no test files; verification by build/render/a11y + AC checklist
 - **light** — a concrete smoke test (renders without crashing; key interaction works)
 - **full** — concrete unit/integration tests covering the AC and logic, targeting 80% coverage
 - **Manual check** (all tiers) — numbered steps to verify in the running app
 
 #### Definition of Done
+
 Checklist: AC met, token-clean, wired in, zero new TS errors, passes a11y lint, tier-appropriate tests passing, renders at all breakpoints.
 
 #### Dependencies & Blockers
+
 Prior components or feature packages it needs; blockers (e.g. a missing asset → use a marked placeholder). "None identified" if none.
 
 #### References
+
 Plan, conventions, PRD, related components.
 
 ### 6. SELF-VALIDATE BEFORE SAVING
@@ -142,8 +152,14 @@ If `CONVENTIONS.md` defines the skeleton as a named-export functional component 
 If the PRD lists four events with dates/times/venue, the data file contains those four events exactly, typed:
 
 ```ts
-export interface EventItem { name: string; date: string; venue: string; /* ... */ }
-export const events: EventItem[] = [ /* the real four events from the PRD */ ];
+export interface EventItem {
+  name: string;
+  date: string;
+  venue: string; /* ... */
+}
+export const events: EventItem[] = [
+  /* the real four events from the PRD */
+];
 ```
 
 NOT placeholder lorem data when the PRD provides real content.

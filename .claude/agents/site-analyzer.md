@@ -58,6 +58,7 @@ Record everything the PRD's SEO section will need: the exact NAP for schema, the
 ### 6. BUILD THE CONTENT-VS-ARTIFACT CATALOG
 
 Two explicit site-wide lists:
+
 - **Real content to preserve** — every substantive item (this is the content-preservation contract the PRD will be checked against)
 - **Artifacts to discard** — every template/builder leftover
 

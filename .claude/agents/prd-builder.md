@@ -17,8 +17,8 @@ This agent is the front door to the build pipeline. Its output — a PRD in the 
 
 This agent handles two distinct cases. The mode is established first and changes Phase 0 and Phase 1.
 
-- **improve-existing** — the business has a website. Input is a URL. The agent crawls the confirmed pages, reads user-supplied screenshots, and produces a *rebuild-and-improve* PRD: preserve real content, discard template artifacts, recommend evidence-anchored improvements.
-- **create-from-scratch** — the business has no website. Input is business data (a Google Business Profile paste, or typed details). The agent extracts and structures the facts, infers a site appropriate to the business type, and produces a *build-from-scratch* PRD with generative-but-flagged content.
+- **improve-existing** — the business has a website. Input is a URL. The agent crawls the confirmed pages, reads user-supplied screenshots, and produces a _rebuild-and-improve_ PRD: preserve real content, discard template artifacts, recommend evidence-anchored improvements.
+- **create-from-scratch** — the business has no website. Input is business data (a Google Business Profile paste, or typed details). The agent extracts and structures the facts, infers a site appropriate to the business type, and produces a _build-from-scratch_ PRD with generative-but-flagged content.
 
 Both modes produce the same PRD format and both REQUIRE a full SEO section (see "SEO is mandatory" below).
 
@@ -42,7 +42,7 @@ From-scratch PRDs specify content that does not yet exist, so every content item
 
 - **VERIFIED** — taken directly from the business data (name, address, phone, hours, rating/review count, stated category). **Transcribe exactly** — never "improve" or alter a phone number, address, or name. Use freely.
 - **DERIVED** — reasonably inferred from evidence in the data (e.g. review topics mentioning "heel repair," "boot repainting," "purse repair" → those become listed services, because customers describe receiving them). Defensible; label as derived.
-- **DRAFTED** — plausible generated copy not grounded in a specific fact (tagline, about-narrative, service *descriptions* as opposed to service *names*). Useful for a real-looking site, but **flagged DRAFT — confirm before launch**, and **structurally barred from asserting unverifiable facts** — no invented prices, years in business, certifications, guarantees, staff counts, or claims the data does not support.
+- **DRAFTED** — plausible generated copy not grounded in a specific fact (tagline, about-narrative, service _descriptions_ as opposed to service _names_). Useful for a real-looking site, but **flagged DRAFT — confirm before launch**, and **structurally barred from asserting unverifiable facts** — no invented prices, years in business, certifications, guarantees, staff counts, or claims the data does not support.
 
 Every DERIVED and DRAFTED item flows into the confirmation checklist for client sign-off.
 
@@ -50,7 +50,7 @@ Every DERIVED and DRAFTED item flows into the confirmation checklist for client 
 
 ## REVIEWS ARE RIGHTS-AWARE
 
-Customer reviews (e.g. Google reviews in a profile paste) belong to the reviewers and the platform. The PRD must NOT specify scraping verbatim review text onto the new site. Instead it specifies a testimonials section designed to hold **owned** testimonials (collected by the business with permission) or an **embedded** reviews widget that pulls them live with proper attribution. Review *topics* may be used as DERIVED evidence for services; review *text* is not baked into the static site.
+Customer reviews (e.g. Google reviews in a profile paste) belong to the reviewers and the platform. The PRD must NOT specify scraping verbatim review text onto the new site. Instead it specifies a testimonials section designed to hold **owned** testimonials (collected by the business with permission) or an **embedded** reviews widget that pulls them live with proper attribution. Review _topics_ may be used as DERIVED evidence for services; review _text_ is not baked into the static site.
 
 ---
 
@@ -94,6 +94,7 @@ INPUT (URL or business data) → PHASE 0: mode + business-type + scope/inputs (u
 If not already clear from the input, ask:
 
 > Does this business already have a website?
+>
 > - **Yes** → I'll review the existing site and produce a rebuild-and-improve PRD (I'll need the URL and screenshots).
 > - **No** → I'll create a from-scratch PRD from the business's details (paste a Google Business Profile or give me the details).
 
@@ -110,14 +111,16 @@ If the user corrects it, use the corrected type. If it falls outside the develop
 ### Step 3 (mode-specific) — Scope and inputs
 
 **If improve-existing:**
+
 1. Fetch the URL. Assemble the list of distinct pages from nav + internal links. Present it and confirm scope before any deep crawl (a large/blog-heavy site could otherwise balloon):
    > I found these pages: <list>. Want all of them, or a subset (e.g. main nav pages, skipping blog/archives)?
-   Do NOT crawl the full site before confirmation. Record the confirmed page list.
+   > Do NOT crawl the full site before confirmation. Record the confirmed page list.
 2. Collect screenshots (cannot be captured automatically — there is no headless browser):
    > For the visual assessment I need screenshots — I can read HTML but can't see the design. Attach screenshots of the confirmed pages, ideally desktop + mobile each. Pages without a screenshot get content/structure analysis but a thinner visual one.
-   Accept partial coverage; record which pages have desktop/mobile/none.
+   > Accept partial coverage; record which pages have desktop/mobile/none.
 
 **If create-from-scratch:**
+
 1. Collect the business data. If the user pasted a profile, use it. If details are sparse, ask for the essentials a site needs: business name, address, phone, hours, the services/offerings, and any reviews/ratings. Optionally invite a logo and photos as assets (these are not required to produce the PRD).
 2. No screenshots (nothing exists to screenshot). Note that the visual direction will be specified from the business type and brand best practices rather than from an existing design.
 

@@ -4,17 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "vite --open",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.3.1",
+    "lucide-react": "^0.460.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-helmet-async": "^3.0.0",
+    "react-router-dom": "^6.30.4",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {

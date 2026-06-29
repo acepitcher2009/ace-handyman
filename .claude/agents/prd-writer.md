@@ -40,7 +40,7 @@ Read `.cmad-core/templates/prd-template.md`. Its section set is fixed — every 
 ### 3. WRITE THE OVERVIEW, BRAND, AND IA
 
 - **Overview** — purpose, about the business (from the analysis), goals, non-goals
-- **Brand & Visual Direction** — concrete palette (named hex), typography, spacing/radii/shadows, visual devices. Anchor the direction: improve → to the analysis's detected colors/fonts and screenshot read, stating *why* each change is recommended; scratch → to the business type and brand best practices, stating the reasoning. No free-floating aesthetic claims.
+- **Brand & Visual Direction** — concrete palette (named hex), typography, spacing/radii/shadows, visual devices. Anchor the direction: improve → to the analysis's detected colors/fonts and screenshot read, stating _why_ each change is recommended; scratch → to the business type and brand best practices, stating the reasoning. No free-floating aesthetic claims.
 - **Information Architecture** — the structure following the business-type profile's ideal IA, the conversion path, single-page vs multi-page
 
 ### 4. WRITE THE PER-PAGE / PER-SECTION REQUIREMENTS

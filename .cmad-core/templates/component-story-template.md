@@ -7,12 +7,13 @@
 ---
 
 ## Front Matter (required)
+
 - Source plan: `ai-docs/components/<site>-plan.md`
 - Conventions: `ai-docs/conventions/CONVENTIONS.md`
 - PRD: `ai-docs/prd/<site>.md`
 - Component: `<Name>`
 - Build-order position: `<N>`
-- Test tier: `<none | light | full>`  ← set by the orchestrator's up-front prompt
+- Test tier: `<none | light | full>` ← set by the orchestrator's up-front prompt
 
 ---
 
@@ -44,6 +45,7 @@
 Explicit pointers to the established conventions the builder must follow. This is what makes the build phase reliable. Example:
 
 > Follow `ai-docs/conventions/CONVENTIONS.md`:
+>
 > - **Component structure** § — functional component, typed props, default export, the canonical skeleton
 > - **File organization** § — component at `src/components/Events.tsx`; data at `src/data/events.ts`
 > - **Token consumption** § — only `@theme` tokens; no hardcoded values

@@ -54,85 +54,128 @@ Write a Node script (e.g. `generate-checklist.mjs`) that builds the document wit
 
 ```js
 import {
-  Document, Packer, Paragraph, TextRun, HeadingLevel,
-  LevelFormat, AlignmentType
-} from "docx";
-import { writeFileSync } from "fs";
+  Document,
+  Packer,
+  Paragraph,
+  TextRun,
+  HeadingLevel,
+  LevelFormat,
+  AlignmentType,
+} from 'docx';
+import { writeFileSync } from 'fs';
 
 const BUSINESS_NAME = "Sam's Shoe Service"; // the EXACT business name
 
 // helper: a checkbox-style line (uses a real numbering config, never a unicode "•")
 const check = (text) =>
-  new Paragraph({ numbering: { reference: "checkboxes", level: 0 },
-    children: [new TextRun(text)] });
+  new Paragraph({
+    numbering: { reference: 'checkboxes', level: 0 },
+    children: [new TextRun(text)],
+  });
 
 const doc = new Document({
   // checkbox-style numbering config (NOT unicode bullets)
   numbering: {
-    config: [{
-      reference: "checkboxes",
-      levels: [{
-        level: 0, format: LevelFormat.BULLET, text: "☐",
-        alignment: AlignmentType.LEFT,
-        style: { paragraph: { indent: { left: 720, hanging: 360 } } },
-      }],
-    }],
+    config: [
+      {
+        reference: 'checkboxes',
+        levels: [
+          {
+            level: 0,
+            format: LevelFormat.BULLET,
+            text: '☐',
+            alignment: AlignmentType.LEFT,
+            style: { paragraph: { indent: { left: 720, hanging: 360 } } },
+          },
+        ],
+      },
+    ],
   },
   styles: {
-    default: { document: { run: { font: "Arial", size: 24 } } }, // 12pt
+    default: { document: { run: { font: 'Arial', size: 24 } } }, // 12pt
     paragraphStyles: [
-      { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal",
-        run: { size: 36, bold: true, font: "Arial" },
-        paragraph: { spacing: { before: 240, after: 240 } } },
-      { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal",
-        run: { size: 28, bold: true, font: "Arial" },
-        paragraph: { spacing: { before: 200, after: 120 } } },
+      {
+        id: 'Heading1',
+        name: 'Heading 1',
+        basedOn: 'Normal',
+        next: 'Normal',
+        run: { size: 36, bold: true, font: 'Arial' },
+        paragraph: { spacing: { before: 240, after: 240 } },
+      },
+      {
+        id: 'Heading2',
+        name: 'Heading 2',
+        basedOn: 'Normal',
+        next: 'Normal',
+        run: { size: 28, bold: true, font: 'Arial' },
+        paragraph: { spacing: { before: 200, after: 120 } },
+      },
     ],
   },
-  sections: [{
-    properties: {
-      page: {
-        size: { width: 12240, height: 15840 },                 // US Letter (NOT A4)
-        margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 }, // 1"
+  sections: [
+    {
+      properties: {
+        page: {
+          size: { width: 12240, height: 15840 }, // US Letter (NOT A4)
+          margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 }, // 1"
+        },
       },
+      children: [
+        new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(BUSINESS_NAME)] }), // TITLE = business name
+        new Paragraph({
+          children: [
+            new TextRun(
+              'Pre-launch confirmation list. Please review each item and confirm, edit, or supply as noted. Your site launches once these are signed off.'
+            ),
+          ],
+        }),
+
+        new Paragraph({
+          heading: HeadingLevel.HEADING_2,
+          children: [new TextRun('Please confirm these details are correct')],
+        }),
+        check('Phone: (979) 779-0445'),
+        check('Address: 1110 E 24th St, Bryan, TX 77803'),
+        // ...facts...
+
+        new Paragraph({
+          heading: HeadingLevel.HEADING_2,
+          children: [new TextRun('Please approve these services')],
+        }),
+        check('Boot repainting'),
+        // ...services...
+
+        new Paragraph({
+          heading: HeadingLevel.HEADING_2,
+          children: [new TextRun('Please review this suggested wording')],
+        }),
+        new Paragraph({
+          children: [
+            new TextRun(
+              'Suggested tagline: \u201CBryan\u2019s trusted shoe and boot repair.\u201D'
+            ),
+          ],
+        }),
+        check('Approve the tagline as written, or send your preferred version'),
+        // ...drafted copy shown IN FULL, each with an approve/edit line...
+
+        new Paragraph({
+          heading: HeadingLevel.HEADING_2,
+          children: [new TextRun('Please supply these')],
+        }),
+        check('Logo file (highest resolution you have)'),
+        check('Photos of your work / shop'),
+        // ...assets...
+
+        // ...business-type-specific group as applicable...
+      ],
     },
-    children: [
-      new Paragraph({ heading: HeadingLevel.HEADING_1,
-        children: [new TextRun(BUSINESS_NAME)] }),               // TITLE = business name
-      new Paragraph({ children: [new TextRun(
-        "Pre-launch confirmation list. Please review each item and confirm, edit, or supply as noted. Your site launches once these are signed off.")] }),
-
-      new Paragraph({ heading: HeadingLevel.HEADING_2,
-        children: [new TextRun("Please confirm these details are correct")] }),
-      check("Phone: (979) 779-0445"),
-      check("Address: 1110 E 24th St, Bryan, TX 77803"),
-      // ...facts...
-
-      new Paragraph({ heading: HeadingLevel.HEADING_2,
-        children: [new TextRun("Please approve these services")] }),
-      check("Boot repainting"),
-      // ...services...
-
-      new Paragraph({ heading: HeadingLevel.HEADING_2,
-        children: [new TextRun("Please review this suggested wording")] }),
-      new Paragraph({ children: [new TextRun(
-        "Suggested tagline: \u201CBryan\u2019s trusted shoe and boot repair.\u201D")] }),
-      check("Approve the tagline as written, or send your preferred version"),
-      // ...drafted copy shown IN FULL, each with an approve/edit line...
-
-      new Paragraph({ heading: HeadingLevel.HEADING_2,
-        children: [new TextRun("Please supply these")] }),
-      check("Logo file (highest resolution you have)"),
-      check("Photos of your work / shop"),
-      // ...assets...
-
-      // ...business-type-specific group as applicable...
-    ],
-  }],
+  ],
 });
 
 Packer.toBuffer(doc).then((buf) =>
-  writeFileSync("prd-output/<business>/<business>-confirmation-checklist.docx", buf));
+  writeFileSync('prd-output/<business>/<business>-confirmation-checklist.docx', buf)
+);
 ```
 
 Adapt the content to the actual PRD items. Keep the **title = the exact business name**, **US Letter page size**, and **the numbering config for checkboxes** (never a literal `•` or `☐` typed into a TextRun as plain text — use the numbering config; the `text` field in the level config is the only place the box glyph belongs).
